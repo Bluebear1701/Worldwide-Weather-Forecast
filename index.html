@@ -6,10 +6,23 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta http-equiv="X-UA-Compatible" content="ie=edge" />
       <link rel="stylesheet" href="./assets/css/style.css" />
+      <title> Weather Dashboard</title>
     </head>
     <body>
-      <header>          
+      <header> 
+          <hero>Weather Dashboard </hero>         
       </header>
+      <main class="flex-row justify-space-between">
+        <div class="col-12 col-md-4">
+          <div class="card">
+            <h3 class="card-header text-uppercase">Search By User</h3>
+            <form id="user-form" class="card-body">
+              <lable class="form-label" for="search">Search</lable>
+              <input name="city" id="cityName" type="text" autofocus="true" class="form-input" />
+              <button type="submit" class="btn">Get User</button>
+            </form>
+          </div>
+     
     </body>
     <script src="./assets/js/script.js"></script>
   </html>
