@@ -58,14 +58,21 @@ var displayWeather = function(weather, searchCity){
     weatherContainerEl.textContent= "";  
     citySearchInputEl.textContent=searchCity;
 };
-    //console.log(weather);
-    var currentdate=document.createElement("span")
-    currentdate.textContent="("+ moment.js(weather.dt.value).format(LLLL) +")";
-    citySearchInputEl.appendChild(currentdate);
+var today = 
+moment().format('ddd MM/DD/YYYY, hh:mm');
+$("#currentDay").html(today);
 
 function citySearch() {
     cityName = cityInput.value;
     getWeather(cityName);
 }
+
+$(".button").on("click",function() {
+    var input =$(this).siblings(".input").val()
+    var city=$(this).parent ().attr("id")
+    //local.storage
+    localStorage.setItem(city,input)
+});
+$("#city .input").val(localStorage.getItem("city"))
 
 searchButton.addEventListener("click", citySearch);
