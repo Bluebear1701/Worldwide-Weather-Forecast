@@ -1,5 +1,4 @@
 .hero-is-info {
- background-color: rgb(86, 187, 245);
  text-align: center;
  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 
@@ -8,28 +7,11 @@ h3 {
     color: purple;
     font-weight: bold;
     font-size: 20px;
+    margin-top: auto;
+
 }
 main {
     margin: 20px auto;
-    width: 94%;
+    width: 20%;    
   }
-
-  .form-label,
-.form-input,
-.form-textarea {
-  display: block;
-}
-
-.form-label {
-  font-size: 1.1rem;
-  margin: 0 0 0 5px;
-}
-
-.form-input {
-  width: 15%;
-  padding: .5%;
-  margin: 3px 0;
-  font-size: 1.2rem;
-  border: 2px solid var(--light-dark);
-  border-radius: var(--border-radius);
-}
+  
