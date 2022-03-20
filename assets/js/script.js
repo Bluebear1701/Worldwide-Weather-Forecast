@@ -2,7 +2,8 @@ var appId = "e9c5575e3a5b6939670c3a1588bc2124";
 var cityName;
 var searchButton = document.querySelector(".button");
 var cityInput = document.querySelector("#city");
-
+var currentForecast = document.querySelector("#current-forecast");
+var fiveday = document.querySelector("#five-day-forecast");
 
 var getcoordinates = function () {
   fetch(
@@ -18,8 +19,6 @@ var getcoordinates = function () {
       console.log(data);
     });
 };
-
-
 
 var getWeather = function () {
   fetch(
@@ -48,31 +47,31 @@ var getWeather = function () {
       ).then(function (response) {
         response.json().then(function (data) {
           console.log(data);
+          displayWeather(data);
         });
       });
     });
 };
 
-var displayWeather = function(weather, searchCity){
-    //clear old content
-    weatherContainerEl.textContent= "";  
-    citySearchInputEl.textContent=searchCity;
+var displayWeather = function (data) {
+  var currentTempurature = data.current.temp;
+  document.getElementById("current-temp").textContent =
+    "Tempurature:" + currentTempurature;  
 };
-var today = 
-moment().format('ddd MM/DD/YYYY, hh:mm');
+
+
+var today = moment().format("ddd MM/DD/YYYY, hh:mm");
 $("#currentDay").html(today);
 
 function citySearch() {
-    cityName = cityInput.value;
-    getWeather(cityName);
+  cityName = cityInput.value;
+  getWeather(cityName);
 }
 
-$(".button").on("click",function() {
-    var input =$(this).siblings(".input").val()
-    var city=$(this).parent ().attr("id")
-    //local.storage
-    localStorage.setItem(city,input)
+$(".button").on("click", function () {
+  var input = $(this).siblings(".input").val();
+  var city = $(this).parent().attr("city");
+  //local.storage
+  localStorage.setItem(city, input);
 });
-$("#city .input").val(localStorage.getItem("city"))
-
-searchButton.addEventListener("click", citySearch);
+$("#city .input").val(localStorage.getItem("city"));
