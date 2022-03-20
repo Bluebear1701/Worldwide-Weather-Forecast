@@ -4,7 +4,7 @@ var searchButton = document.querySelector(".button");
 var cityInput = document.querySelector("#city");
 var currentForecast = document.querySelector("#current-forecast");
 var fiveday = document.querySelector("#five-day-forecast");
-
+console.log("Js working")
 var getcoordinates = function () {
   fetch(
     "https://api.openweathermap.org/geo/1.0/direct?q=" +
@@ -56,12 +56,45 @@ var getWeather = function () {
 var displayWeather = function (data) {
   var currentTempurature = data.current.temp;
   document.getElementById("current-temp").textContent =
-    "Tempurature:" + currentTempurature;  
+    "Tempurature: " + currentTempurature;  
+
+    var currentWindspeed = data.current.wind_speed;
+    document.getElementById("current-windspeed").textContent = "Windspeed: " + currentWindspeed;
+
+    var  currentHumidity = data.current.humidity;
+    document.getElementById("current-humidity").textContent = "Humidity: " + currentHumidity;
+
+    var  currentUvIndex = data.current.uvi;
+    document.getElementById("uv-index").textContent = "UV-Index: " + currentUvIndex;
+
+    var currentCityName = cityInput.value 
+    document.getElementById("current-city").textContent = "City: " + currentCityName;
+
+    var today = moment().format("ddd MM/DD/YYYY, hh:mm");
+    $("#current-day").text (today);
 };
 
+var displayForecast = function (data) {
+    var currentTempurature = data.daily[1].temp;
+  document.getElementById("current-temp1").textContent =
+    "Tempurature: " + currentTempurature;  
 
-var today = moment().format("ddd MM/DD/YYYY, hh:mm");
-$("#currentDay").html(today);
+    var currentWindspeed = data.daily[1].wind_speed;
+    document.getElementById("current-windspeed1").textContent = "Windspeed: " + currentWindspeed;
+
+    var  currentHumidity = data.current.humidity;
+    document.getElementById("current-humidity1").textContent = "Humidity: " + currentHumidity;
+
+    var  currentUvIndex = data.current.uvi;
+    document.getElementById("uv-index1").textContent = "UV-Index: " + currentUvIndex;
+
+    
+
+    
+}
+
+
+
 
 function citySearch() {
   cityName = cityInput.value;
@@ -71,7 +104,9 @@ function citySearch() {
 $(".button").on("click", function () {
   var input = $(this).siblings(".input").val();
   var city = $(this).parent().attr("city");
+  console.log (input , city )
   //local.storage
+  citySearch()
   localStorage.setItem(city, input);
 });
 $("#city .input").val(localStorage.getItem("city"));
