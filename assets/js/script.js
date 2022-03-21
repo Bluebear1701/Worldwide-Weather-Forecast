@@ -135,9 +135,7 @@ var displayForecast = function (daily) {
   var currentHumidity = daily[0].humidity;
   document.getElementById("current-humidity1").textContent =
     "Humidity: " + currentHumidity; 
-
-
-
+  
 //var displayForecast = function (daily) 
     var today = moment().add(2, "days").format("MMMM Do");
     $("#current-day2").text(today);
